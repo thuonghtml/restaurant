@@ -19,7 +19,7 @@
 		<tbody>
 			@foreach (Cart::content() as $item)
 			<tr>
-				<td class="table-image"><img src="{{ asset('img/' . $item->model->image_url) }}" alt="food" class="img-responsive cart-image"></a></td>
+				<td class="table-image"><img src="{{ asset('img/' . $item->image_url) }}" alt="food" class="img-responsive cart-image"></a></td>
 				<td>{{ $item->name }}</a></td>
 				<td>
 					<select class="quantity" data-id="{{ $item->rowId }}">

@@ -22,3 +22,9 @@ Route::get('/foods/{string}', [
 Route::delete('emptyCart','CartController@emptyCart');
 Route::resource('food','FoodController',['only'=>['index', 'show']]);
 Route::resource('cart', 'CartController');
+Route::group(['prefix' => 'adminfood'], function() {
+	Route::get('',[
+		'uses'=>'AdminFoodController@getAdminIndexFood',
+		'as'=>'adminfood.index'
+	]);
+});
