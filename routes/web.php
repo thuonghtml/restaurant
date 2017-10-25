@@ -27,4 +27,12 @@ Route::group(['prefix' => 'adminfood'], function() {
 		'uses'=>'AdminFoodController@getAdminIndexFood',
 		'as'=>'adminfood.index'
 	]);
+	Route::get('create',[
+		'uses'=>'AdminFoodController@getAdminCreateFood',
+		'as'=>'adminfood.create'
+	]);
+	Route::Post('create',[
+		'uses'=>'AdminFoodController@postAdminCreateFood',
+		'as'=>'adminfood.create'
+	]);
 });
