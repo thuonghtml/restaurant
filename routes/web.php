@@ -35,4 +35,12 @@ Route::group(['prefix' => 'adminfood'], function() {
 		'uses'=>'AdminFoodController@postAdminCreateFood',
 		'as'=>'adminfood.create'
 	]);
+	Route::Get('edit/{id}', [
+        'uses' => 'AdminFoodController@getAdminEditFood',
+        'as' => 'adminfood.edit'
+    ]);
+    Route::Post('edit', [
+        'uses' => 'AdminFoodController@postAdminUpdateFood',
+        'as' => 'adminfood.update'
+    ]);
 });

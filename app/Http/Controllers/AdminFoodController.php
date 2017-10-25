@@ -46,4 +46,34 @@ class AdminFoodController extends Controller
     	
     	return redirect()->route('adminfood.index')->with('info', 'Food created, name is: ' . $request->input('namefood'));
     }
+    public function getAdminEditFood($id)
+    {
+    	$food=Food::find($id);
+    	$sections=Section::orderBy('id','asc')->get();
+    	return view('adminfood.edit',['food'=>$food,'foodId'=>$id,'sections'=>$sections]);
+    }
+    public function postAdminUpdateFood(Request $request)
+    {
+    	$this->validate($request,[
+    		'sectionfood'=>'required|not_in:0',
+    		'namefood'=>'required|min:6',
+    		'description'=>'required|min:10',
+    		'price'=>'required|min:7',
+    		'image'=>'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+    	]);
+    	$food = Food::find($request->input('id'));
+    	$food->name = $request->input('namefood');
+    	$food->description = $request->input('description');
+    	$food->price = $request->input('price');
+    	$food->section_id= $request->input('sectionfood');
+    	if($request->hasFile('image')){
+    		$request->file('image');
+    		$filename= $request->image->getClientOriginalName();
+    		$request->image->move('img',$filename);
+    		$food->image_url = $filename;
+
+    	}
+    	$food->save();
+    	return redirect()->route('adminfood.index')->with('info', 'Food edited, name is: ' . $request->input('namefood'));
+    }
 }

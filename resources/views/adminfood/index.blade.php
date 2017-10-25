@@ -32,13 +32,13 @@
 	<tbody>
 		@foreach ($foods as $item)
 		<tr>
-			<td class="table-image"><img src="{{ asset('img/' . $item->image_url) }}" alt="food" class="img-responsive cart-image"></a></td>
+			<td class="table-image"><img src="{{ asset('img/' . $item->image_url) }}" alt="food" class="img-responsive cart-image"></td>
 			<td>{{ $item->namefood }}</a></td>
 			<td>{{ $item->description}}</td>
 			<td>{{ $item->price}} VNĐ</td>
 			<td>{{ $item->section->name}}</td>
 			<td>
-				<a href="#" class="btn btn-primary a-btn-slide-text">
+				<a href="{{ route('adminfood.edit', ['id' => $item->id]) }}" class="btn btn-primary a-btn-slide-text">
 					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 					<span><strong>Edit</strong></span></a>
 			</td>
@@ -50,7 +50,6 @@
 				</form>
 			</td>
 		</tr>
-
 		@endforeach
 	</tbody>
 </table>
