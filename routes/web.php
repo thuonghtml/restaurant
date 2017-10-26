@@ -43,4 +43,8 @@ Route::group(['prefix' => 'adminfood'], function() {
         'uses' => 'AdminFoodController@postAdminUpdateFood',
         'as' => 'adminfood.update'
     ]);
+    Route::Get('delete/{id}', [
+        'uses' => 'AdminFoodController@getAdminDeleteFood',
+        'as' => 'adminfood.delete'
+    ]);
 });

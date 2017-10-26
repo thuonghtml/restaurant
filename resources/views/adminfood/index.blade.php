@@ -43,11 +43,9 @@
 					<span><strong>Edit</strong></span></a>
 			</td>
 			<td>
-				<form action="#" method="POST" class="side-by-side">
-					{!! csrf_field() !!}
-					<input type="hidden" name="_method" value="DELETE">
-					<input type="submit" class="btn btn-danger a-btn-slide-text" value="Remove">
-				</form>
+				<a href="{{route('adminfood.delete', ['id' => $item->id]) }}" class="btn  btn-danger a-btn-slide-text">
+					<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+					<span><strong>Delete</strong></span></a>
 			</td>
 		</tr>
 		@endforeach

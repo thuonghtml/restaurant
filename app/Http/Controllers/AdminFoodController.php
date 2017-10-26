@@ -76,4 +76,10 @@ class AdminFoodController extends Controller
     	$food->save();
     	return redirect()->route('adminfood.index')->with('info', 'Food edited, name is: ' . $request->input('namefood'));
     }
+    public function getAdminDeleteFood($id)
+    {
+    	$food =Food::find($id);
+    	$food->delete();
+    	return redirect()->route('adminfood.index')->with('info','Food deleted');
+    }
 }
